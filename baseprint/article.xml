@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE article PUBLIC "-//NLM//DTD JATS (Z39.96) Journal Archiving and Interchange DTD v1.2 20190208//EN"
+                  "JATS-archivearticle1.dtd">
+<article xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:xlink="http://www.w3.org/1999/xlink" dtd-version="1.2" article-type="other">
+<front>
+<journal-meta>
+<journal-id></journal-id>
+<journal-title-group>
+</journal-title-group>
+<issn></issn>
+<publisher>
+<publisher-name></publisher-name>
+</publisher>
+</journal-meta>
+<article-meta>
+<title-group>
+<article-title>DeSci dPID vs Document Succession Identifier</article-title>
+</title-group>
+<contrib-group>
+<contrib contrib-type="author">
+<contrib-id contrib-id-type="orcid">https://orcid.org/0000-0002-5014-4809</contrib-id>
+<name>
+<surname>Ellerman</surname>
+<given-names>E. Castedo</given-names>
+</name>
+<email>castedo@castedo.com</email>
+</contrib>
+</contrib-group>
+<pub-date date-type="pub" publication-format="electronic" iso-8601-date="2024-03-19">
+<day>19</day>
+<month>3</month>
+<year>2024</year>
+</pub-date>
+<permissions>
+<copyright-statement>© 2024, Ellerman et al</copyright-statement>
+<copyright-year>2024</copyright-year>
+<copyright-holder>Ellerman et al</copyright-holder>
+<license license-type="open-access">
+<ali:license_ref xmlns:ali="http://www.niso.org/schemas/ali/1.0/">https://creativecommons.org/licenses/by/4.0/</ali:license_ref>
+<license-p>This document is distributed under a Creative Commons Attribution 4.0 International license.</license-p>
+</license>
+</permissions>
+<abstract>
+<p><ext-link ext-link-type="uri" xlink:href="https://perm.pub/1wFGhvmv8XZfPx0O5Hya2e9AyXo/">Document Succession Identifiers</ext-link> (DSIs)
+and the infrastructure developed by <ext-link ext-link-type="uri" xlink:href="https://desci.com">DeSci Labs</ext-link> both implement
+<ext-link ext-link-type="uri" xlink:href="https://en.wikipedia.org/wiki/Persistent_identifier">Persistent IDentifiers</ext-link> (PIDs).
+This document summarizes the basic similarities and differences between the two.</p>
+</abstract>
+</article-meta>
+</front>
+<body>
+<sec id="terminology">
+  <title>Terminology</title>
+  <table-wrap>
+    <table>
+      <thead>
+        <tr>
+          <th align="center">DeSci Concept</th>
+          <th align="center">Similar DSI Concept</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td align="center">dPID &amp; root hash</td>
+          <td align="center">base DSI</td>
+        </tr>
+        <tr>
+          <td align="center">node</td>
+          <td align="center">Baseprint document succession</td>
+        </tr>
+        <tr>
+          <td align="center">Research object (version of)</td>
+          <td align="center">Baseprint document snapshot</td>
+        </tr>
+        <tr>
+          <td align="center">IPFS directory</td>
+          <td align="center">Git tree</td>
+        </tr>
+        <tr>
+          <td align="center">IPFS CID</td>
+          <td align="center">SWHID &amp; Git hash</td>
+        </tr>
+        <tr>
+          <td align="center">Ceramic stream</td>
+          <td align="center">Git history in DSGL</td>
+        </tr>
+        <tr>
+          <td align="center">DID</td>
+          <td align="center">SSH signing key</td>
+        </tr>
+      </tbody>
+    </table>
+  </table-wrap>
+  <sec id="dpid-root-hash-vs-base-dsi">
+    <title>dPID &amp; root hash vs base DSI</title>
+    <p>A base DSI is a DSI without an edition number. For example:</p>
+    <disp-quote>
+      <p><monospace>VGajCjaNP1Ugz58Khn1JWOEdMZ8</monospace></p>
+    </disp-quote>
+    <p>A dPID can be drastically shorter and more human-friendly, for example:</p>
+    <disp-quote>
+      <p><monospace>46</monospace></p>
+    </disp-quote>
+    <p>A dPID is assigned to a root hash, which is primarily for internal use and usually not
+    seen by a user.
+    A base DSI is a hash but is shorter than a DeSci node’s root hash.</p>
+    <p>A dPID and root hash are designed to fill different needs with different trade-offs. A DSI
+    is a compromise designed to only partially satisfy the objectives of a dPID and a root hash.</p>
+  </sec>
+  <sec id="desci-node-vs-baseprint-document-succession">
+    <title>DeSci Node vs Baseprint document succession</title>
+    <p>Both DeSci nodes and Baseprint document successions track versions of digitally encoded
+    snapshots of a research object. A Baseprint document is a narrow type of research
+    object.</p>
+    <p>Versioning in DeSci Nodes is done with positive integers, whereas a document succession
+    can use multi-level edition numbers, similar to semantic versioning of software packages.</p>
+  </sec>
+  <sec id="desci-research-object-vs-baseprint-document-snapshot">
+    <title>DeSci research object vs Baseprint document snapshot</title>
+    <p>As of 2023, DSI are only used for a very narrow type of research object,
+    specifically static research documents (that are JATS XML based) stored in
+    <ext-link ext-link-type="uri" xlink:href="https://perm.pub/VGajCjaNP1Ugz58Khn1JWOEdMZ8/">Document Succession Git Layout</ext-link> (DSGL).
+    Like JATS XML packages as found in PubMed Central, these research documents are not intended to exceed tens of megabytes and are typically much smaller.</p>
+    <p>DeSci Nodes are designed for a much more general type of research object that
+    brings manuscripts, data, and code together in one place.
+    DeSci Nodes are designed to handle vastly larger research objects, even ones that are hundreds of gigabytes.</p>
+  </sec>
+  <sec id="ipfs-directory-vs-git-tree">
+    <title>IPFS directory vs Git tree</title>
+    <p>A DeSci research object is digitally encoded in an IPFS directory, whereas a Baseprint
+    document snapshot is encoded in a Git tree.</p>
+  </sec>
+  <sec id="ipfs-cid-vs-swhid-git-hash">
+    <title>IPFS CID vs SWHID &amp; Git hash</title>
+    <p>An IPFS directory (or fixed version of) is identified by a CID (content identifier),
+    whereas a Git tree is identified by a Git hash or SWHID (Software Hash IDentifier).</p>
+    <p>A CID has a self-describing format, whereas a Git hash does not.</p>
+  </sec>
+  <sec id="ceramic-stream-vs-git-history-in-dsgl">
+    <title>Ceramic stream vs Git history in DSGL</title>
+    <p>A Git history in DSGL (<ext-link ext-link-type="uri" xlink:href="https://perm.pub/VGajCjaNP1Ugz58Khn1JWOEdMZ8">Document Succession Git
+    Layout</ext-link>) serves a role to DSI similar to
+    the role <ext-link ext-link-type="uri" xlink:href="https://developers.ceramic.network/">Ceramic</ext-link> streams serve for a dPID.</p>
+    <p>A Git history in DSGL is stored in Git repositories or git-compatible archives such
+    as the Software Heritage Archive, whereas Ceramic streams of DeSci
+    Nodes use IPFS and the Ethereum blockchain.</p>
+  </sec>
+  <sec id="did-vs-ssh-signing-key">
+    <title>DID vs SSH signing key</title>
+    <p>Both Git histories in DSGL and Ceramic streams require a mechanism such that only
+    certain entities (such as authors) can update the distributed research objects.</p>
+    <p>DeSci Nodes uses DIDs (Decentralized Identifiers), whereas DSGL uses SSH signing keys
+    for this function.</p>
+  </sec>
+</sec>
+</body>
+<back>
+</back>
+</article>
