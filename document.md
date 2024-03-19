@@ -15,6 +15,7 @@ Terminology
 | :---: | :---: |
 | dPID & root hash | base DSI |
 | node | Baseprint document succession |
+| Alias registry | N/A |
 | Research object (version of) | Baseprint document snapshot |
 | IPFS directory | Git tree |
 | IPFS CID | SWHID & Git hash |
@@ -46,6 +47,15 @@ object.
 
 Versioning in DeSci Nodes is done with positive integers, whereas a document succession
 can use multi-level edition numbers, similar to semantic versioning of software packages.
+
+### DeSci Alias Registry
+
+A dPID is an alias to the root hash of a DeSci node.
+dPIDs can be very short and human-friendly because they rely on a decentralized alias registry,
+which makes a dPID an [extrinsic identifier](
+https://www.softwareheritage.org/2020/07/09/intrinsic-vs-extrinsic-identifiers/).
+In contrast, a DSI is an intrinsic identifier, which does not require a registry
+at the cost of being longer and less human-friendly than a dPID.
 
 ### DeSci research object vs Baseprint document snapshot
 
