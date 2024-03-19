@@ -69,6 +69,10 @@ This document summarizes the basic similarities and differences between the two.
           <td align="center">Baseprint document succession</td>
         </tr>
         <tr>
+          <td align="center">Alias registry</td>
+          <td align="center">N/A</td>
+        </tr>
+        <tr>
           <td align="center">Research object (version of)</td>
           <td align="center">Baseprint document snapshot</td>
         </tr>
@@ -114,6 +118,14 @@ This document summarizes the basic similarities and differences between the two.
     object.</p>
     <p>Versioning in DeSci Nodes is done with positive integers, whereas a document succession
     can use multi-level edition numbers, similar to semantic versioning of software packages.</p>
+  </sec>
+  <sec id="desci-alias-registry">
+    <title>DeSci Alias Registry</title>
+    <p>A dPID is an alias to the root hash of a DeSci node.
+    dPIDs can be very short and human-friendly because they rely on a decentralized alias registry,
+    which makes a dPID an <ext-link ext-link-type="uri" xlink:href="https://www.softwareheritage.org/2020/07/09/intrinsic-vs-extrinsic-identifiers/">extrinsic identifier</ext-link>.
+    In contrast, a DSI is an intrinsic identifier, which does not require a registry
+    at the cost of being longer and less human-friendly than a dPID.</p>
   </sec>
   <sec id="desci-research-object-vs-baseprint-document-snapshot">
     <title>DeSci research object vs Baseprint document snapshot</title>
